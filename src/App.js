@@ -23,7 +23,7 @@ function App() {
   return (
     <div>
       <Header/>
-      { !loading ? <Map eventData/>: <Loader/> }
+      { !loading ? <Map eventData={eventData}/>: <Loader/> }
     </div>
   );
 }

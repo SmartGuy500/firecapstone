@@ -6,9 +6,10 @@ import LocationInfoBox from './LocationInfoBox'
 
 const Map = ({ eventData, center, zoom }) => {
   const [locationInfo, setLocationInfo] = useState(null)
-  const markers = eventData.map(ev => {
+  const markers = eventData.map((ev, index)=> {
     if(ev.categories[0].id ===8) {
       return <LocationMarker 
+      key={index}
       lat={ev.geometries[0].coordinates[1]} 
       lng={ev.geometries[0].coordinates[0]} 
       onClick={()=>setLocationInfo({ id: ev.id, title: ev.title })}/>
@@ -18,8 +19,7 @@ const Map = ({ eventData, center, zoom }) => {
   return (
     <div className='map'>
         <GoogleMapReact
-          bootstrapURLKeys={{key:
-          'AIzaSyBJNBNOKIJnvuUILIJHoRBEdl-zmQMmGkw'}}
+          bootstrapURLKeys={{key:'AIzaSyBJNBNOKIJnvuUILIJHoRBEdl-zmQMmGkw'}}
           defaultCenter={ center }
           defaultZoom={ zoom }
         >
